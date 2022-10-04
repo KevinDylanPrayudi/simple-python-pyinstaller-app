@@ -12,7 +12,7 @@ node {
     }
     stage('Deliver') {
         withEnv([
-          "VOLUME='$(pwd)/sources:/src'",
+          "VOLUME='\$(pwd)/sources:/src'",
           "IMAGE='cdrx/pyinstaller-linux:python2'"
         ]) {
             dir(path: env.BUILD_ID) { 
