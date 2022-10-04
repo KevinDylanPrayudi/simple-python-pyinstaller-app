@@ -14,7 +14,7 @@ node {
         withDockerContainer('cdrx/pyinstaller-linux:python2') {
             dir(path: env.BUILD_ID) { 
               unstash(name: 'compiled-results') 
-              sh "pyinstaller -F add2vals.py 
+              sh "pyinstaller -F add2vals.py"
               archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals" 
             }
         }
