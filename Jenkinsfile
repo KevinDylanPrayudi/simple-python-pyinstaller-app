@@ -9,6 +9,7 @@ node {
         withDockerContainer('qnib/pytest') {
             sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
         }
+        input message Lanjut ke deploy?
     }
     stage('Deliver') {
         withEnv([
@@ -19,6 +20,7 @@ node {
               unstash(name: 'compiled-results') 
               sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
               archiveArtifacts "sources/dist/add2vals" 
+              sleep 1 MINUTES
             }
         }
     }
