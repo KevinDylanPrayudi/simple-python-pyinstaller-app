@@ -20,7 +20,7 @@ node {
               unstash(name: 'compiled-results') 
               sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
               archiveArtifacts "sources/dist/add2vals" 
-              sleep: 1 MINUTES
+              sleep(time:3,unit:"MINUTES")
             }
         }
     }
