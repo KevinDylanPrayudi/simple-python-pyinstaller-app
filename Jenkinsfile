@@ -10,9 +10,9 @@ node {
             sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
         }
     }
-
-    input message: "Lanjut ke deploy?"
-
+    stage('Approval') {
+      input message: "Lanjut ke deploy?"
+    }
     stage('Deploy') {
         withEnv([
           "VOLUME=\$(pwd)/sources:/src",
