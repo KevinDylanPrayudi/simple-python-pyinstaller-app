@@ -9,9 +9,11 @@ node {
         withDockerContainer('qnib/pytest') {
             sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
         }
-        input message: "Lanjut ke deploy?"
     }
-    stage('Deliver') {
+
+    input message: "Lanjut ke deploy?"
+
+    stage('Deploy') {
         withEnv([
           "VOLUME=\$(pwd)/sources:/src",
           "IMAGE=cdrx/pyinstaller-linux:python2"
